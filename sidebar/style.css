@@ -1,0 +1,188 @@
+/* ------------------------------
+   基本リセットとベーススタイル
+------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Jost", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  font-weight: 400; /* 300から400(標準)に調整 */
+  color: #1e293b;
+  line-height: 1.8;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* ------------------------------
+   ヘッダー (透明感のある白いガラス)
+------------------------------ */
+.header {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  padding: 0 50px;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* 縦3本線ハンバーガーボタン（極細の直線） */
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 20px;
+  height: 22px;
+  margin-right: 35px;
+  padding: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hamburger-btn:hover {
+  opacity: 0.5;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 1.5px; /* 線も少しだけ太く補正 */
+  height: 100%;
+  background-color: #0f172a;
+}
+
+.header-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500; /* 300から500(やや太め)に変更 */
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+/* ------------------------------
+   サイドバー (静かなすりガラス)
+------------------------------ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 20px 0 50px rgba(15, 23, 42, 0.04);
+  z-index: 100;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  
+  transform: translateX(-100%);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: 400; /* 300から400に変更 */
+  cursor: pointer;
+  color: #64748b;
+  transition: color 0.4s ease;
+  line-height: 1;
+  font-family: 'Jost', sans-serif;
+}
+
+.close-btn:hover {
+  color: #0f172a;
+}
+
+/* ------------------------------
+   サイドバーのメニュー (番号付き)
+------------------------------ */
+.sidebar-menu {
+  list-style: none;
+  counter-reset: menu-counter;
+}
+
+.sidebar-menu li {
+  margin-bottom: 35px;
+}
+
+.sidebar-menu a {
+  text-decoration: none;
+  color: #1e293b;
+  
+  font-size: 1.15rem;
+  font-weight: 500; /* 300から500(中太)に変更 */
+  display: flex;
+  align-items: center;
+  transition: color 0.4s ease, transform 0.4s ease;
+  letter-spacing: 0.15em;
+}
+
+.sidebar-menu a::before {
+  counter-increment: menu-counter;
+  content: "0" counter(menu-counter);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  color: #64748b; /* 数字が見やすいよう少し濃い色に変更 */
+  margin-right: 25px;
+  font-weight: 400; /* 300から400に変更 */
+  letter-spacing: 0.2em;
+}
+
+.sidebar-menu a:hover {
+  color: #0284c7;
+  transform: translateX(8px);
+}
+
+/* ------------------------------
+   背景の曇り（オーバーレイ）
+------------------------------ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+  z-index: 90;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+main {
+  padding-top: 120px;
+  padding-left: 50px;
+}
