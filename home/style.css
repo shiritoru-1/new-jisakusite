@@ -1,3 +1,9 @@
+h2 {
+  margin-top: 40px;/* 数値は好みの大きさに変更してください */
+  margin-bottom: 6px; /* 数値は好みの大きさに変更してください */
+}
+
+
 .container {
   display: flex;             /* 横並びにする */
   align-items: flex-start;   /* 上部に揃える */
@@ -49,3 +55,51 @@
   margin-bottom: 24px; /* ここでお好みの隙間の広さに調整してください */
 }
 
+.media-container {
+  display: flex;
+  align-items: center; /* 垂直方向の中央揃え */
+  gap: 10px;          /* テキストと画像の間の余白 */
+}
+
+img {
+  max-width: 90%;  /* 画面幅を超えない */
+  height: auto;     /* 比率を維持 */
+}
+
+
+
+この下のバー
+.site-footer {
+  background-color: #222222;
+  color: #ffffff;
+  padding: 30px 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-nav {
+  margin-bottom: 15px;
+}
+
+.footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 12px;
+  display: inline-block;
+}
+
+.footer-nav a:hover {
+  opacity: 0.7;
+}
+
+.copyright {
+  margin: 0;
+  color: #aaaaaa;
+  font-size: 12px;
+}
