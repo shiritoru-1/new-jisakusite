@@ -1,0 +1,50 @@
+.intro-box {
+      border-left: 3px solid #666666;
+      padding-left: 10px;
+      margin-bottom: 15px;
+      font-size: 12px;
+      color: #555555;
+    }
+
+    /* テーブルデザイン（細枠・シンプル） */
+    table {
+      width: calc(100% - 50px); /* 横幅いっぱいに広がるのを防ぎつつ余白を確保 */
+      border-collapse: collapse;
+      border: 1px solid #999999;
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      margin-right: 50px; /* 右側に50pxの余白を設定 */
+    }
+
+    th {
+      background-color: #eeeeee;
+      color: #333333;
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid #999999;
+      padding: 5px 8px;
+      text-align: center;
+    }
+
+    td {
+      border: 1px solid #cccccc;
+      padding: 6px 8px;
+      font-size: 12px;
+      vertical-align: top;
+    }
+
+    /* 各列の幅と装飾 */
+    td.num {
+      width: 35px;
+      text-align: center;
+      background-color: #fdfdfd;
+      color: #666666;
+      font-weight: bold;
+    }
+
+    td.q {
+      width: 42%;
+      background-color: #f9f9f9;
+      color: #000000;
+      font-weight: bold;
+    }

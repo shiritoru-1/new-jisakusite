@@ -1,0 +1,22 @@
+.flex-container {
+  display: flex;       /* 子要素を横並びにする */
+  align-items: center; /* 縦方向の中央揃え（必要に応じて） */
+  gap: 10px;           /* 要素同士の間隔（必要に応じて） */
+}
+
+.code-box pre {
+  /* 枠のサイズ指定 */
+  max-height: 200px;      /* 枠の最大の高さ（これを超えると縦スクロール） */
+  width: 100%;            /* 枠の幅 */
+
+  /* スクロールの設定 */
+  overflow: auto;         /* 縦・横どちらも溢れたら自動でスクロールバーを表示 */
+  white-space: pre;       /* 改行やスペースをそのまま表示し、自動折り返しをしない */
+
+  /* 見た目の整え（ダークモード風） */
+  background-color: #ffffff; /* 背景色 */
+  color: #06023a;           /* 文字色 */
+  padding: 15px;             /* 内側の余白 */
+  border-radius: 5px;        /* 角丸 */
+  font-family: monospace;    /* 等幅フォント */
+}

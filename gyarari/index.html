@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>しりとるのギャラリー</title>
+  
+  <!-- Webフォント (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSSの読み込み -->
+  <link rel="stylesheet" href="../sidebar/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../masume/masume.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="header-title">しりとるのギャラリー</div>
+  </header>
+
+  <!-- メイン内容 -->
+  <main>
+    <h1>しりとるのギャラリー</h1>
+    <P>ようこそ！私が撮った写真を表示しています<p>
+    <P>多分ここに表示されているのはRAW編集したあとのやつだと思います。（たぶん）
+    <div class="image-container">
+         <img src="./gyarari/1.JPG" alt="写真1">     
+    </div>
+    <P>沖縄で撮った写真ですね　なんかうっすらレンズの中にごみがあって写真にも写ってるんですよね。<br>意味わかんない</p>
+    
+  </main>
+
+  <!-- JavaScriptの読み込み (サイドバーを自動生成・制御) -->
+  <script src="../sidebar/script.js"></script>
+</body>
+</html>

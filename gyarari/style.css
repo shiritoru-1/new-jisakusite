@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;  /* 上から下へ縦に並べる */
+  align-items: center;     /* すべての要素を左右の中央に置く */
+  text-align: center;      /* 文字列もすべて中央揃えにする */
+}
+
+
+
+.image-container img {
+  width: 750px;  /* 写真の横幅を固定する場合 */
+  height: auto;  /* 縦横比を保つ */
+}

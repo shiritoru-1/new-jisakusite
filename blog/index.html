@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>しりとるのブログ</title>
+  
+  <!-- Webフォント (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSSの読み込み -->
+  <link rel="stylesheet" href="../sidebar/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../masume/masume.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="header-title">しりとるのブログ</div>
+  </header>
+
+  <!-- メイン内容 -->
+  <main>
+      <div class="content-wrapper">
+    <main>
+      
+      <header class="page-header">
+        <h1 class="page-title">ブログ</h1>
+        <p class="page-desc">喋るのがめんどい構造なのでほとんど書かないです。ちゃんとしたことを書きたいときは、ここに書くつもりです</p>
+      </header>
+
+      <section class="gallery-container">
+        
+        <a href="../blog/1/index.html" class="gallery-card">
+          <div class="card-image">
+            <img src="../sozai/AIKON.jpg" alt="test">
+          </div>
+          <div class="card-content">
+            <span class="card-tag">その他</span>
+            <h2 class="card-title">個人サイト公開！！</h2>
+            <p class="card-text">この度無事に個人サイト公開できました！！！！</p>
+            <time class="card-date">2026.08.??</time>
+          </div>
+        </a>
+
+
+      <footer class="page-footer">
+        <a href="../home/home.html" class="back-link">← ホームへ戻る</a>
+      </footer>
+
+    </main>
+  </div>
+
+
+
+
+  </main>
+
+  <!-- JavaScriptの読み込み (サイドバーを自動生成・制御) -->
+  <script src="../sidebar/script.js"></script>
+</body>
+</html>
