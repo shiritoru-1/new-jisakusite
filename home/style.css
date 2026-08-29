@@ -1,3 +1,34 @@
+.skill-table {
+        width: 100%;
+        max-width: 800px;
+        border-collapse: separate;
+        border-spacing: 0 15px; /* 行と行の間にゆったりとした余白を作る */
+        margin: 20px 0;
+        color: #333;
+    }
+
+    .skill-table th, 
+    .skill-table td {
+        border: none; /* 枠線を完全に削除 */
+        padding: 5px 10px;
+        vertical-align: top;
+        background-color: transparent; /* 背景色をなくし、方眼紙を完全に透けさせる */
+    }
+
+    .skill-table th {
+        width: 28%;
+        text-align: right; /* 項目名を右寄せにしてスタイリッシュに */
+        padding-right: 30px;
+        color: #777; /* 項目名は少し薄いグレーにして控えめに */
+        font-weight: normal; /* 太字を解除してすっきりさせる */
+    }
+
+    .skill-table td {
+        color: #222;
+        line-height: 1.7;
+        letter-spacing: 0.05em; /* 文字の間隔をほんの少し空けてスマートな印象に */
+    }
+
 h2 {
   margin-top: 40px;/* 数値は好みの大きさに変更してください */
   margin-bottom: 6px; /* 数値は好みの大きさに変更してください */
