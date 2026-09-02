@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="close-btn" id="closeBtn" aria-label="閉じる">&times;</button>
       </div>
       <ul class="sidebar-menu">
-        <li><a href="../home/index.html">ホーム</a></li>
-        <li><a href="../100shitumon/index.html">100くらいの質問</a></li>
-        <li><a href="../blog/index.html">ブログ</a></li>
-        <li><a href="../gyarari/index.html">ギャラリー</a></li>
-        <li><a href="../sougo/index.html">相互リンク</a></li>
-        <li><a href="../tyosaku/index.html">©2026~now しりとる</a></li>
+        <li><a href="/home/index.html">ホーム</a></li>
+        <li><a href="/100shitumon/index.html">100くらいの質問</a></li>
+        <li><a href="/blog/index.html">ブログ</a></li>
+        <li><a href="/gyarari/index.html">ギャラリー</a></li>
+        <li><a href="/sougo/index.html">相互リンク</a></li>
+        <li><a href="/tyosaku/index.html">©2026~now しりとる</a></li>
       </ul>
     </nav>
   `;
