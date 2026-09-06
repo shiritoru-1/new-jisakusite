@@ -134,3 +134,73 @@ img {
   color: #aaaaaa;
   font-size: 12px;
 }
+
+/*以下スマホ処理*/
+
+/* =========================================
+   スマホ対応 (レスポンシブデザイン)
+========================================= */
+@media screen and (max-width: 768px) {
+  /* メインエリアの左右の余白をスマホ向けに狭める */
+  main {
+    padding-left: 15px !important;
+    padding-right: 15px;
+  }
+
+  /* プロフィール部分を縦並びにして中央揃えに */
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* スマホだとアイコンが大きすぎるので調整 */
+  .circle-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* テキストの左揃えを維持しつつ、アイコンとの間隔を調整 */
+  .text-content {
+    text-align: left;
+    width: 100%;
+  }
+
+  /* 「使える技術」のテーブルをスマホで見やすく縦並びに崩す */
+  .skill-table, .skill-table tbody, .skill-table tr, .skill-table th, .skill-table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .skill-table th {
+    text-align: left;
+    padding-right: 0;
+    padding-bottom: 0;
+    color: #0284c7; /* 項目名に色をつけて見やすく */
+    font-weight: 500;
+  }
+  
+  .skill-table td {
+    padding-left: 10px;
+    padding-top: 2px;
+    margin-bottom: 15px;
+  }
+
+  /* パソコンスペックのテーブルが画面外にはみ出さないようにする */
+  table[border="1"] {
+    width: 100%;
+    font-size: 14px;
+    word-break: break-word; /* 長い文字でレイアウトが崩れるのを防ぐ */
+  }
+
+  /* アクセスカウンターが横にはみ出さないように折り返しを許可 */
+  .media-container {
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  /* 画像やTwitter（X）の埋め込みがはみ出さないように制限 */
+  img, iframe, .twitter-tweet {
+    max-width: 100%;
+  }
+}
