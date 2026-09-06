@@ -186,3 +186,46 @@ main {
   padding-top: 120px;
   padding-left: 50px;
 }
+
+/*以下スマホ処理*/
+
+/* =========================================
+   サイドバー・ヘッダーのスマホ対応
+========================================= */
+@media screen and (max-width: 768px) {
+  /* ヘッダーの高さと余白をスマホ向けに縮小 */
+  .header {
+    padding: 0 15px;
+    height: 60px;
+  }
+
+  .hamburger-btn {
+    margin-right: 15px;
+  }
+
+  /* タイトルの文字サイズを少し小さくして画面に収める */
+  .header-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* スマホの画面幅に合わせてメインの開始位置を上げる */
+  main {
+    padding-top: 80px;
+  }
+
+  /* サイドバーの幅を固定(360px)から、画面幅の80%に変更 */
+  .sidebar {
+    width: 80vw;
+    padding: 30px 20px;
+  }
+
+  .sidebar-header {
+    margin-bottom: 40px;
+  }
+
+  /* メニューの文字サイズを調整 */
+  .sidebar-menu a {
+    font-size: 1rem;
+  }
+}
