@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>しりとるのブログ - iPhoneの標準マーカーによる個人情報ぼかしの安全性</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../sidebar/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../../masume/masume.css">
+
+  <style>
+    /* ==========================================
+       ブログ記事用スタイル
+    ========================================== */
+
+    main {
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 90px 0 120px;
+    }
+
+    .article-header {
+      margin-bottom: 55px;
+    }
+
+    .article-category {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 12px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      color: #666;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .article-title {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+
+    .article-date {
+      margin-top: 18px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article {
+      font-size: 16px;
+      line-height: 2;
+      color: #222;
+    }
+
+    .article p {
+      margin: 0 0 32px;
+    }
+
+    .article h3 {
+      position: relative;
+      margin: 65px 0 25px;
+      padding-left: 18px;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .article h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      width: 4px;
+      height: 1.2em;
+      border-radius: 4px;
+      background: #222;
+    }
+
+    .article strong {
+      font-weight: 700;
+    }
+
+    .note {
+      margin: 40px 0;
+      padding: 22px 25px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      background: #f8f8f8;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .note-title {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .image-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      margin: 35px 0;
+      border: 1px dashed #bbb;
+      border-radius: 12px;
+      background: #fafafa;
+      color: #999;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .image-placeholder img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 35px 0;
+    }
+
+    .comparison-item {
+      overflow: hidden;
+      border-radius: 12px;
+      background: #f7f7f7;
+    }
+
+    .comparison-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .comparison-label {
+      padding: 12px 15px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .conclusion {
+      margin-top: 70px;
+      padding: 30px;
+      border-radius: 16px;
+      background: #f5f5f5;
+    }
+
+    .conclusion h3 {
+      margin-top: 0;
+    }
+
+    .article-end {
+      margin-top: 70px;
+      padding-top: 30px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        width: min(100% - 28px, 900px);
+        padding-top: 70px;
+      }
+
+      .article {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .article h3 {
+        font-size: 21px;
+        margin-top: 50px;
+      }
+
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .note,
+      .conclusion {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <button
+      class="hamburger-btn"
+      id="menuBtn"
+      aria-label="メニューを開く"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="header-title">
+      しりとるのブログ
+    </div>
+  </header>
+
+
+  <!-- メイン -->
+  <main>
+
+    <!-- 記事ヘッダー -->
+    <header class="article-header">
+
+      <span class="article-category">
+        SECURITY / PHOTO
+      </span>
+
+      <h1 class="article-title">
+        iPhoneの標準マーカによる<br>
+        個人情報ぼかしの安全性
+      </h1>
+
+      <div class="article-date">
+        2026.09.21
+      </div>
+
+    </header>
+
+
+    <!-- 記事本文 -->
+    <article class="article">
+
+      <p>
+        以前からTwitter上で人に見せたくない情報の部分をぼかして公開しているツイートが見受けられます。例えばこんな感じのやつですね。
+      </p>
+
+
+      <!-- チケット画像 -->
+      <div class="image-placeholder">
+        <img
+          src="../../sozai/blog/2/image1.png"
+          alt="個人情報をぼかしたチケットの画像"
+        >
+      </div>
+
+
+      <p>
+        これがなぜぼかされているかというと、このチケットの左下には予約番号などが書いておりそこを公開すると、予約した人の名前などが割り出されてしまう可能性があるからです。
+      </p>
+
+
+
+
+
+      <p>
+        そのため同じようにQRコードにもモザイクをかけています。このぼかしの方法以外として、iPhoneの標準の写真アプリに搭載されているマーカーを使用した投稿があります。今回はそのマーカーの安全性について考えていこうと思います。
+      </p>
+
+
+      <h3>iPhoneの「マーカー」は本当に安全？</h3>
+
+      <p>
+        このマーカーは写真で重要な部分に線を引いて強調したりする役割があります。しかしこのマーカーはあくまで強調するだけの役割です。
+      </p>
+
+      <p>
+        そのため、明るさを上げると文字が見えてしまうことがあります。下の画像のようにマーカーで書いた画像は明るさを上げたり、特定の編集をすることでそのマーカーの文字の下にある文字を透かした見ることができます。
+      </p>
+
+
+      <!-- マーカー検証画像 -->
+      <div class="image-placeholder">
+        <img
+          src="../../sozai/blog/2/image2.jpeg"
+          alt="マーカーで隠した文字を編集によって確認する検証画像"
+        >
+      </div>
+
+
+      <p>
+        左側に書いてある〇塗りというのはマーカーでどれだけ重ね塗りをしたというのかを表しています。左側がマーカーで塗った元画像。右側が編集を重ねた画像です。
+      </p>
+
+
+      <p>
+        右側にあるマーカーの文字がすべて見えていて
+      </p>
+
+
+      <p>
+        「PIN:3301 password：vscode 1234567890」という文字列がはっきり見えています。
+      </p>
+
+
+      <div class="note">
+
+        <span class="note-title">
+          ⚠ 注意
+        </span>
+
+        実際のパスワードや予約番号などの重要な情報を、このような方法で隠すことはおすすめできません。
+
+      </div>
+
+
+      <h3>インターネット上に投稿した画像では？</h3>
+
+      <p>
+        しかし一度インターネット上に出した画像にはサーバの容量削減などを理由に投稿された画像に対して軽量化処理を基本的に行います。
+      </p>
+
+      <p>
+        それによってこの明るさを上げる編集が意味をなさいなくなることがあります。
+      </p>
+
+      <p>
+        見てみましょう。
+      </p>
+
+
+      <!-- Twitter投稿後の比較画像 -->
+      <div class="image-placeholder">
+        <img
+          src="../../sozai/blog/2/image4.jpeg"
+          alt="Twitterに投稿した後のマーカーで隠した文字を編集によって確認する検証画像"
+        >
+      </div>
+
+
+      <p>
+        これが一度Twitterに投稿し、それを再びダウンロードを行い同じように編集したものです。
+      </p>
+
+      <p>
+        1塗り、2塗りでは文字が識別できますが、それ以降は識別できません。
+      </p>
+
+      <p>
+        これはTwitterが自動で画像の圧縮化を行っているからです。
+      </p>
+
+      <div class="conclusion">
+
+        <h3>まとめ</h3>
+
+        <p>
+          そのため基本的には安全と考えてよいでしょう。
+        </p>
+
+      </div>
+
+
+      <div class="note">
+
+        <span class="note-title">
+          検証について
+        </span>
+
+        （主の環境ではTwitterの機能である高画質アップロードでもテストを行えないため、実施していません。ご了承ください。またテスト環境などで、結果が異なる場合があるかもしれませんが、投稿主は一切責任を負いません）
+
+      </div>
+
+
+      <div class="article-end">
+        以上！<br>
+        ここまで読んでくれてありがとう！
+      </div>
+
+    </article>
+
+  </main>
+
+
+  <!-- サイドバー -->
+  <script src="../../sidebar/script.js"></script>
+
+</body>
+</html>

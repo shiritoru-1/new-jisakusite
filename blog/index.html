@@ -1,69 +1,516 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>しりとるのブログ</title>
-  
-  <!-- Webフォント (Google Fonts) -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- CSSの読み込み -->
   <link rel="stylesheet" href="../sidebar/style.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="../masume/masume.css">
+
+  <style>
+
+    /* ==========================================
+       基本
+    ========================================== */
+
+    main {
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 90px 0 100px;
+    }
+
+
+    /* ==========================================
+       ページヘッダー
+    ========================================== */
+
+    .page-header {
+      margin-bottom: 55px;
+    }
+
+    .page-label {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 6px 12px;
+
+      border: 1px solid #ddd;
+      border-radius: 999px;
+
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .page-title {
+      margin: 0;
+
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .page-desc {
+      max-width: 700px;
+      margin: 22px 0 0;
+
+      color: #777;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+
+    /* ==========================================
+       ブログ一覧
+    ========================================== */
+
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+
+    /* ==========================================
+       ブログカード
+    ========================================== */
+
+    .gallery-card {
+      display: grid;
+
+      /*
+       * 左：画像
+       * 右：記事情報
+       */
+      grid-template-columns: 300px 1fr;
+
+      min-height: 190px;
+
+      overflow: hidden;
+
+      border: 1px solid #e4e4e4;
+      border-radius: 16px;
+
+      background: #fff;
+
+      color: inherit;
+      text-decoration: none;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-3px);
+
+      border-color: #d5d5d5;
+
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.07);
+    }
+
+
+    /* ==========================================
+       左側：画像
+    ========================================== */
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+
+      min-height: 190px;
+
+      overflow: hidden;
+
+      background: #f2f2f2;
+    }
+
+    .card-image img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.5s ease;
+    }
+
+    .gallery-card:hover .card-image img {
+      transform: scale(1.04);
+    }
+
+
+    /* ==========================================
+       右側：記事情報
+    ========================================== */
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+
+      padding: 30px 35px;
+    }
+
+
+    /* タグ */
+
+    .card-tag {
+      align-self: flex-start;
+
+      margin-bottom: 12px;
+      padding: 5px 10px;
+
+      border-radius: 999px;
+
+      background: #f1f1f1;
+      color: #666;
+
+      font-size: 11px;
+      line-height: 1;
+    }
+
+
+    /* タイトル */
+
+    .card-title {
+      margin: 0;
+
+      color: #1c1c1c;
+
+      font-size: 25px;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+
+    /* 説明 */
+
+    .card-text {
+      max-width: 600px;
+
+      margin: 12px 0 18px;
+
+      color: #777;
+
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+    /* 日付 */
+
+    .card-date {
+      color: #999;
+
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
+
+
+    /* ==========================================
+       フッター
+    ========================================== */
+
+    .page-footer {
+      margin-top: 70px;
+
+      padding-top: 30px;
+
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+
+      color: #555;
+
+      font-size: 14px;
+      text-decoration: none;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.55;
+    }
+
+
+    /* ==========================================
+       スマートフォン
+    ========================================== */
+
+    @media (max-width: 700px) {
+
+      main {
+        width: calc(100% - 28px);
+        padding-top: 70px;
+      }
+
+      /*
+       * スマホでは画像を上、
+       * 記事情報を下にする
+       */
+
+      .gallery-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-image {
+        height: 210px;
+        min-height: 0;
+      }
+
+      .card-content {
+        padding: 22px;
+      }
+
+      .card-title {
+        font-size: 21px;
+      }
+
+      .card-text {
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
 </head>
+
+
 <body>
 
-  <!-- ヘッダー -->
+  <!-- ==========================================
+       ヘッダー
+  ========================================== -->
+
   <header class="header">
-    <button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
+
+    <button
+      class="hamburger-btn"
+      id="menuBtn"
+      aria-label="メニューを開く"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <div class="header-title">しりとるのブログ</div>
+
+    <div class="header-title">
+      しりとるのブログ
+    </div>
+
   </header>
 
-  <!-- メイン内容 -->
+
+  <!-- ==========================================
+       メイン
+  ========================================== -->
+
   <main>
-      <div class="content-wrapper">
-    <main>
+
+    <!-- ページタイトル -->
+
+    <header class="page-header">
+
+      <span class="page-label">
+        BLOG
+      </span>
+
+      <h1 class="page-title">
+        ブログ
+      </h1>
+
+      <p class="page-desc">
+        喋るのがめんどい構造なので、ほとんど書かないです。<br>
+        ちゃんとしたことを書きたいときは、ここに書くつもりです。
+      </p>
+
+    </header>
+
+
+    <!-- ==========================================
+         記事一覧
+    ========================================== -->
+
+<!-- iPhoneの標準マーカによる個人情報ぼかしの安全性 -->
+
+      <a
+        href="2/inde.html"
+        class="gallery-card"
+      >
+
+        <!-- 左：画像 -->
+
+        <div class="card-image">
+
+          <img
+            src="../../sozai/AIKON.jpg"
+            alt="個人サイト公開の記事アイコン"
+          >
+
+        </div>
+
+
+        <!-- 右：記事情報 -->
+
+        <div class="card-content">
+
+          <span class="card-tag">
+            技術
+          </span>
+
+          <h2 class="card-title">
+        iPhoneの標準マーカによる個人情報ぼかしの安全性
+          </h2>
+
+          <p class="card-text">
+            iPhoneの標準マーカによる個人情報ぼかしの安全性についての記事
+          </p>
+
+          <time
+            class="card-date"
+            datetime="2026-08-01"
+          >
+            2026.08.01
+          </time>
+
+        </div>
+
+      </a>
+
+
+      <!-- 個人サイト公開 -->
+
+      <a
+        href="1/index.html"
+        class="gallery-card"
+      >
+
+        <!-- 左：画像 -->
+
+        <div class="card-image">
+
+          <img
+            src="../../sozai/AIKON.jpg"
+            alt="個人サイト公開の記事アイコン"
+          >
+
+        </div>
+
+
+        <!-- 右：記事情報 -->
+
+        <div class="card-content">
+
+          <span class="card-tag">
+            その他
+          </span>
+
+          <h2 class="card-title">
+            個人サイト公開！！
+          </h2>
+
+          <p class="card-text">
+            この度、無事に個人サイトを公開できました！！！！
+          </p>
+
+          <time
+            class="card-date"
+            datetime="2026-08-01"
+          >
+            2026.08.01
+          </time>
+
+        </div>
+
+      </a>
+
       
-      <header class="page-header">
-        <h1 class="page-title">ブログ</h1>
-        <p class="page-desc">喋るのがめんどい構造なのでほとんど書かないです。ちゃんとしたことを書きたいときは、ここに書くつもりです</p>
-      </header>
-
-      <section class="gallery-container">
-        
-        <a href="1/index.html" class="gallery-card">
-          <div class="card-image">
-            <img src="../../sozai/AIKON.jpg" alt="test">
-          </div>
-          <div class="card-content">
-            <span class="card-tag">その他</span>
-            <h2 class="card-title">個人サイト公開！！</h2>
-            <p class="card-text">この度無事に個人サイト公開できました！！！！</p>
-            <time class="card-date">2026.08.??</time>
-          </div>
-        </a>
 
 
-      <footer class="page-footer">
-        <a href="../home/home.html" class="back-link">← ホームへ戻る</a>
-      </footer>
+      <!--
+      ==========================================
+      新しい記事を追加するとき
+      ==========================================
 
-    </main>
-  </div>
+      <a href="2/index.html" class="gallery-card">
+
+        <div class="card-image">
+
+          <img
+            src="../../sozai/ブログ画像.jpg"
+            alt="記事タイトル"
+          >
+
+        </div>
+
+        <div class="card-content">
+
+          <span class="card-tag">
+            技術
+          </span>
+
+          <h2 class="card-title">
+            記事タイトル
+          </h2>
+
+          <p class="card-text">
+            記事の説明をここに書きます。
+          </p>
+
+          <time
+            class="card-date"
+            datetime="2026-09-21"
+          >
+            2026.09.21
+          </time>
+
+        </div>
+
+      </a>
+
+      -->
 
 
+    </section>
 
+
+    <!-- ==========================================
+         フッター
+    ========================================== -->
+
+    <footer class="page-footer">
+
+      <a
+        href="../home/home.html"
+        class="back-link"
+      >
+        ← ホームへ戻る
+      </a>
+
+    </footer>
 
   </main>
 
-  <!-- JavaScriptの読み込み (サイドバーを自動生成・制御) -->
+
+  <!-- サイドバー -->
   <script src="../sidebar/script.js"></script>
+
 </body>
 </html>
+```

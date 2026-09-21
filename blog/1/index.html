@@ -1,43 +1,354 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>個人サイト公開！！</title>
-  
-  <!-- Webフォント (Google Fonts) -->
+
+  <title>しりとるのブログ - 個人サイト公開！！</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- CSSの読み込み -->
+  <!-- CSS -->
   <link rel="stylesheet" href="../../sidebar/style.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="../../masume/masume.css">
+
+  <style>
+    /* ==========================================
+       ブログ記事用スタイル
+    ========================================== */
+
+    main {
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 90px 0 120px;
+    }
+
+    .article-header {
+      margin-bottom: 50px;
+    }
+
+    .article-category {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 12px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .article-title {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 48px);
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+
+    .article-date {
+      margin-top: 16px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article {
+      color: #222;
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .article p {
+      margin: 0 0 32px;
+    }
+
+    .article h3 {
+      position: relative;
+      margin: 60px 0 25px;
+      padding-left: 18px;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .article h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      width: 4px;
+      height: 1.2em;
+      border-radius: 4px;
+      background: #222;
+    }
+
+    /* 強調ボックス */
+    .highlight {
+      margin: 40px 0;
+      padding: 28px;
+      border-radius: 16px;
+      background: #f5f5f5;
+    }
+
+    .highlight-title {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* 画像 */
+    .article-image {
+      display: block;
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      margin: 40px auto;
+      border-radius: 14px;
+    }
+
+    /* ダウンロードボタン */
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      margin-top: 10px;
+      padding: 14px 22px;
+
+      border-radius: 10px;
+      background: #222;
+      color: #fff;
+
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .download-button:hover {
+      transform: translateY(-2px);
+      opacity: 0.8;
+    }
+
+    .article-end {
+      margin-top: 70px;
+      padding-top: 30px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      color: #777;
+    }
+
+    /* スマートフォン */
+    @media (max-width: 600px) {
+
+      main {
+        width: calc(100% - 28px);
+        padding-top: 70px;
+      }
+
+      .article {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .article h3 {
+        font-size: 21px;
+        margin-top: 50px;
+      }
+
+      .highlight {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- ヘッダー -->
   <header class="header">
-    <button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
+
+    <button
+      class="hamburger-btn"
+      id="menuBtn"
+      aria-label="メニューを開く"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <div class="header-title">しりとるのブログ</div>
+
+    <div class="header-title">
+      しりとるのブログ
+    </div>
+
   </header>
 
-  <!-- メイン内容 -->
+
+  <!-- メイン -->
   <main>
-    <h2>個人サイト公開！！</h2>
-    <p>2026.08.01</p>
-    <p>このページが見れているということは、個人サイトがちゃんと公開できたってことですね！<br>なんか今までとは違う喜びが湧き上がってくるくる！<br>何かこのままミスドに行きたい気分、ポン・デ・リング食べまくりたい<br>ここまでできた自分を褒めたい<br>なんかすごい感情だからなんか言葉に表せられない。<br>あとこのhtmlプログラムを書くことでめちゃくちゃ役に経ったものがあります。<br>それは...br入力機！<br>これだけで開発のスピードが何倍も上がった気がする。<br>使ったのは ラズパイのpico2 hとタクトボタン、これだけでとっても便利なものができたのでぜひやってみてね。<br>一回やってみ、飛ぶぞ</p>
-    <image src="../../sozai/blog/1/blog.jpg" alt="test" style="width: 100%; max-width: 600px; height: auto;">
-    <p>実際に作った超簡易的なものですがとても便利です。<br>開発のスピードがめちゃ上がります<br>あとプログラム置いときますね</p> 
-    <a href="../../sozai/blog/1/code.py" download="code.py">ダウンロードボタンだよ！</a>
 
-   </main>
+    <!-- 記事ヘッダー -->
+    <header class="article-header">
 
-  <!-- JavaScriptの読み込み (サイドバーを自動生成・制御) -->
+      <span class="article-category">
+        DIARY / DEVELOPMENT
+      </span>
+
+      <h1 class="article-title">
+        個人サイト公開！！
+      </h1>
+
+      <div class="article-date">
+        2026.08.01
+      </div>
+
+    </header>
+
+
+    <!-- 記事本文 -->
+    <article class="article">
+
+      <p>
+        このページが見れているということは、
+        個人サイトがちゃんと公開できたってことですね！
+      </p>
+
+      <p>
+        いやー、なんか今までとは違う喜びが湧き上がってくる！！
+      </p>
+
+      <p>
+        何なんだろう、この感じ。
+        とりあえず今はめちゃくちゃミスドに行きたい気分です。
+      </p>
+
+      <p>
+        ポン・デ・リング食べまくりたい。
+      </p>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          ここまでできた自分を褒めたい
+        </div>
+
+        <p style="margin-bottom: 0;">
+          なんかすごい感情なんだけど、
+          うまく言葉に表せないんですよね。
+          とにかく「個人サイトを公開できた！」というだけで
+          かなり嬉しい。
+        </p>
+
+      </div>
+
+
+      <h3>そして、もう一つ便利だったもの</h3>
+
+      <p>
+        あと、このHTMLを書くことで
+        めちゃくちゃ役に立ったものがあります。
+      </p>
+
+      <p>
+        それは……
+      </p>
+
+      <h3>BR入力機！！</h3>
+
+      <p>
+        これだけで開発のスピードが
+        何倍も上がった気がします。
+      </p>
+
+      <p>
+        使ったのは、
+        <strong>Raspberry Pi Pico 2 H</strong> と
+        <strong>タクトボタン</strong>。
+      </p>
+
+      <p>
+        本当にこれだけで、
+        HTMLを書くときにかなり便利な入力装置が作れました。
+      </p>
+
+
+      <!-- 作ったもの -->
+      <img
+        src="../../sozai/blog/1/blog.jpg"
+        alt="実際に制作したBR入力機"
+        class="article-image"
+      >
+
+
+      <p>
+        実際に作ったものは超簡易的なんですが、
+        これが意外と便利なんです。
+      </p>
+
+      <p>
+        開発中に何度も
+        <code>&lt;br&gt;</code>
+        を入力することがあるので、
+        ボタン一つで入力できるだけでもかなり楽になります。
+      </p>
+
+      <p>
+        こういう小さな自作ツールって、
+        作ってみると意外と作業効率が変わるんですよね。
+      </p>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          一回やってみ。
+        </div>
+
+        <p style="margin-bottom: 0;">
+          飛ぶぞ。
+        </p>
+
+      </div>
+
+
+      <h3>プログラムも置いておきます</h3>
+
+      <p>
+        せっかくなので、
+        今回作ったBR入力機のプログラムも置いておきます。
+      </p>
+
+      <a
+        href="../../sozai/blog/1/code.py"
+        download="code.py"
+        class="download-button"
+      >
+        ↓ code.py をダウンロード
+      </a>
+
+
+      <div class="article-end">
+        ここまで読んでくれてありがとう！<br>
+        これからもいろいろ作っていきます。
+      </div>
+
+    </article>
+
+  </main>
+
+
+  <!-- サイドバー -->
   <script src="../../sidebar/script.js"></script>
+
 </body>
 </html>
+```
