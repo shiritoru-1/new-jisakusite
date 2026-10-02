@@ -204,3 +204,9 @@ img {
     max-width: 100%;
   }
 }
+
+.max-size-img {
+  max-width: 500px; /* 横幅の最大を500pxに制限 */
+  width: 100%;      /* 500pxより小さい画面では、画面幅いっぱいに縮小 */
+  height: auto;     /* 縦横比を維持 */
+}
